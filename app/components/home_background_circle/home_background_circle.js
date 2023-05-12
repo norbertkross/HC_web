@@ -1,5 +1,22 @@
 import styled, { css } from 'styled-components';
 
+export const LoaderIndicator = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+`;
+export const LoaderBody = styled.div`
+  width: 200px;
+  height: 200px;
+  background-image: url("/loader-for-web.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;   
+`;
+
+
 export const Background = styled.div`
   width: 100vw;
   height: 100vh;
@@ -17,7 +34,7 @@ export const ObjectBody = styled.div`
 export const BackgroundObject = styled.div`
   width: 100vh ;
   height: calc(100vh + 100px);
-  background-image: url("/grey_pattern.jpeg");
+  background-image: url("/grey_pattern.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; 
@@ -25,49 +42,93 @@ export const BackgroundObject = styled.div`
   bottom:-50px;
   position: absolute;
   border-radius:50%;
+`;
+
+export const MobileHeadbackground = styled.div`
+  width: 100vw;
+  height: 80vh;
+  position: absolute;
+  /* right: -18vw;   */
+  overflow: hidden;
+`;
 
 
-/* Mobile */
-@media (max-width: 700px) {
-
-}
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-
-}
+export const MobileBackgroundShape = styled.div`
+  width: 110vw;
+  height: 130vw;
+  background-image: url("/grey_pattern.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  position: absolute;
+  border-radius:50%;
+  top: -20vw;
+  right: -30vw;
 `;
 
 export const SelectedFoodAndItemDurationContainer = styled.div`
-height: 100vh;
 width: 400px;
 display:flex;
 flex-direction:column;
-/* background-color: rgba(17, 204, 6, .5); // PARENT */
 align-items:center;
 justify-content:center;
 position: relative;
 position: absolute;
-right: 20vw;
+/* background-color: rgba(13, 76, 0, 0.5); */
+
+
+    @media (min-width: 800px) {
+      right: 20vw;
+      height: 100vh;
+    }
+
+    @media (max-width: 1200px) {
+      width: 100vw; 
+      padding-top: 80px ;
+    }
 `;
 
 export const SelectedFoodAndItemDuration = styled.div`
-height: 600px;
+
 width: 400px;
 display:flex;
 flex-direction:column;
 /* background-color: rgba(255, 0, 0, 0.5); */
 align-items:center;
 position: relative;
+
+    @media (min-width: 1200px) {
+      height: 600px;
+    }
+    @media (max-width: 1200px) {
+      width: 100vw; 
+      height: 600px;
+    }
+    @media (max-width: 700px) {
+      width: 100vw; 
+      height: 400px;
+    }
 `;
 
 
 export const SelectedFooddItem = styled.div`
-  width: 400px;
-  height: 400px;
-  background-color: purple;
+  width: 380px;
+  height: 380px;
+  background-color: #e6ffeb;
   border-radius:50%;
   position: absolute;
+  background-image: url(${ props => props.image != null ? props.image : '/ybls.jpeg'});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  border: 20px solid white;
+  box-shadow: 0px 25px 80px rgba(0, 0, 0, 0.5);
+  
+    @media (max-width: 600px) {
+     width: 300px;
+     height: 300px;  
+    border: 15px solid white;   
+    }
 `;
 
 export const ItemDurationContainer = styled.div`
@@ -81,6 +142,11 @@ export const ItemDurationContainer = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+    @media (max-width: 600px) {
+     width: 200px;
+     height: 250px; 
+     top:180px;    
+    }  
 `;
 
 export const SelectedFoodLabelRow = styled.div`
@@ -144,16 +210,23 @@ export const ClockEight= styled.div`
 export const AppBar= styled.div`
   width: 100vw;
   height: 60px;
-  /* background-color:green; */
   position: relative;
   padding: 10px 60px;
   display: flex;
   align-items:center;
   justify-content:space-between;
+
+    @media (max-width: 1200px) {
+      /* background-color:green; */
+    }
+    @media (max-width: 800px) {
+      padding: 10px 20px;
+    }
 `;
 
 export const AppLogo= styled.div`
   color:yellow;
+
 `;
 
 export const CartIcon= styled.div`
@@ -163,10 +236,31 @@ export const CartIcon= styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; 
+  /* background-color: ${props => props.bg} ; */
   margin:4px;
   padding-right: 8px;
   position: absolute;
   right: 27vw;
+
+  @media (max-width: 1200px) {
+      position: relative;
+      right: 0;
+
+  } 
+`;
+
+export const MoreMenu= styled.div`
+  width: 25px ;
+  height: 25px;
+  background-image: url("/bars.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  @media (max-width: 1200px) {
+      position: relative;
+      right: 0;
+
+  } 
 `;
 
 export const SignIButton= styled.div`
@@ -175,8 +269,8 @@ export const SignIButton= styled.div`
   align-items:center;
   background-color:transparent;
   height: 40px;
-  color: white;
-  border: 1px solid white;
+  color: ${props => props.color ?? 'white'};
+  border: 1px solid ${props => props.color ?? 'white'};
   padding: 10px 15px;
   border-radius: 30px ;
 `;
@@ -206,7 +300,7 @@ export const LoginIcon= styled.div`
 export const UserIcon= styled.div`
   width: 20px ;
   height:20px;
-  background-image: url("/user-pen.svg");
+  background-image: url(${ props => props.isDark == true ? '/user-pen-black.svg':'/user-pen.svg'});
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat; 
@@ -372,13 +466,17 @@ export const Quantity = styled.div`
 
 export const WidthSpacer = styled.div`
   width:${props => props.width};
-  width:${props => props.height};
+  height:${props => props.height};
 `;
 
 export const FoodOptionsContainer = styled.div`
   display: flex;
   align-items:center;
   margin-top: 60px ;
+    /* @media (max-width: 1200px) {
+      position: absolute;
+      top: 100vh;
+  }  */
 `;
 
 export const Backwards= styled.div`
@@ -425,6 +523,12 @@ export const FoodOptionsBody = styled.div`
   ::-webkit-scrollbar {
     display: none; /* Hide the scrollbar */
   }
+
+
+    @media (max-width: 1100px) {
+     width: 65vw;
+
+    }
 `;
 
 export const FoodItemContainer = styled.div`
@@ -437,28 +541,51 @@ export const FoodItemContainer = styled.div`
   justify-content: space-between;
   align-items:center;
   margin: 0px 12px;
-
-    flex-shrink: 0; /* Prevent the item from resizing */
-
+  cursor:pointer;
+  flex-shrink: 0; /* Prevent the item from resizing */
+    @media (max-width: 700px) {
+  width: 100px;
+  height:160px;
+  }
 `;
 
 export const FoodItemWhiteOvalContainer = styled.div`
   width: 80px;
-  height: 100px;
+  height: 85px;
   background: rgba(86, 245, 155,0.7);
-  /* border-radius: 100px; */
- border-radius: 50% / 50% 50% 50% 50%;
-   transform: scaleY(-1);
-
+  border-radius: 50% / 50% 50% 50% 50%;
+  /* transform: scaleY(-1); */
   margin-top: 10px ;
   background: white;
   box-shadow: 0 7px 30px -10px rgba(150,170,180,0.5);
+box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  display: flex;
+  justify-content:center;
+  align-items:center;
+    @media (max-width: 700px) {
+     width: 50px;
+  height: 55px;
+  }
 `;
 
+export const FoodItem = styled.div`
+width: 60px;
+height: 60px;
+background-image: url(${props => props.image != null ? props.image : '/ybls.jpeg' });
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;   
+  border-radius: 35px ;
+    @media (max-width: 700px) {
+    width: 35px;
+    height: 35px;
+  }  
+`;
 
 export const FoodLabel = styled.div`
   font-size:16px;
   font-weight:500;
+  text-align:center;
   color: #8a94a1;
 `;
 
@@ -487,17 +614,43 @@ export const LogoBody = styled.div`
 
 
 export const LogoH = styled.div`
-  font-size:20px;
+  font-size:24px;
   font-weight:bold;
   color: red;
+    line-height: 1;
+
 `;
 export const LogoC = styled.div`
-  font-size:20px;
+  font-size:24px;
   font-weight:bold;
   color: orange;
+    line-height: 1;
+
 `;
 export const LogoLetters = styled.div`
   font-size:16px;
   font-weight:300;
   color: #8a94a1;
+`;
+
+export const MenuToggledView = styled.div`
+  /* width: 80vw; */
+  height: 300px;
+  background-color: black;
+  position: absolute;
+`;
+
+
+
+
+export const HideOnSmallerScreens = styled.div`
+  @media (max-width: 1200px) {
+    display: none;
+  }
+`;
+
+export const HideOnBiggerScreens = styled.div`
+    @media (min-width: 1200px) {
+        display: none;
+    }
 `;
