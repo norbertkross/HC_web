@@ -19,7 +19,7 @@ export default function UserCart() {
         [1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => {
           return (
             
-            <div style={{ display: 'flex', justifyContent: 'center', margin: '12px 0px' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', margin: '12px 0px' }} key={index}>
               <ItemCardContainer>
                 <ItemCard>
                   <ItemImage />
