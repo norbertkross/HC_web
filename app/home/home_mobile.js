@@ -1,9 +1,9 @@
+import Link from 'next/link';
 import { Dialog } from 'primereact/dialog';
 import { useContext, useEffect, useState } from 'react';
 import { AppBar, BackForwardButton, Backwards, BuyBag, BuyNowButton, BuyNowRoundCartButton, BuyNowRow, CartBadge, CartIcon, ClockEight, CurrencySignRed, DurationBlackContainer, FoodItem, FoodItemContainer, FoodItemWhiteOvalContainer, FoodLabel, FoodOptionsBody, FoodOptionsContainer, Forward, GreyDivider, HideOnBiggerScreens, IncreasePrice, ItemDurationContainer, ItemsQuantityButton, LoginButton, LoginIcon, MobileBackgroundShape, MobileHeadbackground, MoreMenu, OderDetailsSub_1, OderDetailsSub_2, OderYour, OrderRow, PriceLabel, PriceLabelRow, Quantity, ReducePrice, SelectedFoodAndItemDuration, SelectedFoodAndItemDurationContainer, SelectedFooddItem, SelectedFoodLabel, SelectedFoodLabelRow, SelectedFoodLabelSTAR, SignIButton, StarAndRateHolder, STarValue, TotalOrder, TotalOrderValue, UserIcon, WidthSpacer } from '../components/home_background_circle/home_background_circle';
 import { AppStateMain } from '../state/app_state';
 import AppCompanyLogo from './logo_and_company_name';
-
 export default function HomeMobile(params) {
 
   const [deviceWidth, setDeviceWidth] = useState(200.0);
@@ -67,11 +67,14 @@ export default function HomeMobile(params) {
             {
               deviceWidth <= 1200 ?
                 // <div style={{backgroundColor:"red" }}>
-                <CartIcon bg={'red'} >
-                  <CartBadge >
-                    10
-                  </CartBadge>
-                </CartIcon>
+
+                <Link href="/cart">
+                  <CartIcon bg={'red'} >
+                    <CartBadge >
+                      10
+                    </CartBadge>
+                  </CartIcon></Link>
+
                 :
                 <div />
             }
@@ -157,10 +160,10 @@ export default function HomeMobile(params) {
                 return (
                   <FoodItemContainer key={index} background={selectedFoodIndex == index ?
                     deeperColor
-                    :item['background']} onClick={e => {
+                    : item['background']} onClick={e => {
 
-                    setSelectedFoodIndex(index)
-                  }} >
+                      setSelectedFoodIndex(index)
+                    }} >
                     <FoodItemWhiteOvalContainer>
                       <FoodItem image={item['url']} />
                     </FoodItemWhiteOvalContainer>
@@ -225,14 +228,18 @@ export default function HomeMobile(params) {
                 <IncreasePrice />
               </ItemsQuantityButton>
               <WidthSpacer width="20px" />
-              <BuyNowButton>
-                <BuyNowRoundCartButton>
-                  <BuyBag />
-                </BuyNowRoundCartButton>
-                <div style={{ paddingLeft: "8px" }}>
-                  Buy Now
-                </div>
-              </BuyNowButton>
+              <Link href="/product-details/yam-balls">
+
+                <BuyNowButton>
+                  <BuyNowRoundCartButton>
+                    <BuyBag />
+                  </BuyNowRoundCartButton>
+                  <div style={{ paddingLeft: "8px" }}>
+                    Buy Now
+                  </div>
+                </BuyNowButton>
+              </Link>
+
             </BuyNowRow>
           </div>
           <WidthSpacer height={'60px'} />

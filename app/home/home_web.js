@@ -1,4 +1,5 @@
-import { AppBar, AppLogo, BackForwardButton, Background, BackgroundObject, Backwards, BuyBag, BuyNowButton, BuyNowRoundCartButton, BuyNowRow, CartBadge, CartIcon, ClockEight, CurrencySignRed, DurationBlackContainer, FoodItem, FoodItemContainer, FoodItemWhiteOvalContainer, FoodLabel, FoodOptionsBody, FoodOptionsContainer, Forward, GreyDivider, HideOnSmallerScreens, IncreasePrice, ItemDurationContainer, ItemsQuantityButton, LoginButton, LoginIcon, LogoBody, LogoC, LogoH, LogoLetters, ObjectBody, OderDetailsBackground, OderDetailsSub_1, OderDetailsSub_2, OderYour, OrderRow, PriceLabel, PriceLabelRow, Quantity, ReducePrice, SelectedFoodAndItemDuration, SelectedFoodAndItemDurationContainer, SelectedFooddItem, SelectedFoodLabel, SelectedFoodLabelRow, SelectedFoodLabelSTAR, SignIButton, StarAndRateHolder, STarValue, TotalOrder, TotalOrderValue, UserIcon, WidthSpacer } from '../components/home_background_circle/home_background_circle';
+import { AppBar, AppLogo, BackForwardButton, Background, BackgroundObject, Backwards, BuyBag, BuyNowButton, BuyNowRoundCartButton, BuyNowRow, CartBadge, CartIcon, ClockEight, CurrencySignRed, DurationBlackContainer, FoodItem, FoodItemContainer, FoodItemWhiteOvalContainer, FoodLabel, FoodOptionsBody, FoodOptionsContainer, Forward, GreyDivider, HideOnSmallerScreens, IncreasePrice, ItemDurationContainer, ItemsQuantityButton, LoginButton, LoginIcon,ObjectBody, OderDetailsBackground, OderDetailsSub_1, OderDetailsSub_2, OderYour, OrderRow, PriceLabel, PriceLabelRow, Quantity, ReducePrice, SelectedFoodAndItemDuration, SelectedFoodAndItemDurationContainer, SelectedFooddItem, SelectedFoodLabel, SelectedFoodLabelRow, SelectedFoodLabelSTAR, SignIButton, StarAndRateHolder, STarValue, TotalOrder, TotalOrderValue, UserIcon, WidthSpacer } from '../components/home_background_circle/home_background_circle';
+import Link from 'next/link';
 
 import AppCompanyLogo from './logo_and_company_name';
 import { AppStateMain } from '../state/app_state';
@@ -49,15 +50,18 @@ export default function HomeWeb(params) {
               <GreyDivider />
               <IncreasePrice/>
             </ItemsQuantityButton>
-            <WidthSpacer width="20px" />
-            <BuyNowButton>
-              <BuyNowRoundCartButton>
-                <BuyBag/>
-              </BuyNowRoundCartButton>
-              <div style={{ paddingLeft: "8px" }}>
-                Buy Now
-              </div>
-            </BuyNowButton>
+              <WidthSpacer width="20px" />
+              <Link href="/product-details/yam-balls">
+
+                <BuyNowButton>
+                  <BuyNowRoundCartButton>
+                    <BuyBag />
+                  </BuyNowRoundCartButton>
+                  <div style={{ paddingLeft: "8px" }}>
+                    Buy Now
+                  </div>
+                </BuyNowButton>
+              </Link>
           </BuyNowRow>
           
           <FoodOptionsContainer>
@@ -142,12 +146,18 @@ export default function HomeWeb(params) {
 
           </SelectedFoodAndItemDurationContainer>
         <AppBar>
-          <AppCompanyLogo/>
-          <CartIcon >
+          <AppCompanyLogo />
+          <Link href="/cart">
+            <CartIcon bg={'red'} >
+              <CartBadge >
+                10
+              </CartBadge>
+            </CartIcon></Link>
+          {/* <CartIcon >
             <CartBadge>
               10
             </CartBadge>
-         </CartIcon>
+         </CartIcon> */}
           <div style={{ display: "flex",alignItems:"center" }}>
           
           <div style={{ width: "15px"}} />

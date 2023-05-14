@@ -1,4 +1,5 @@
 'use client'
+import { useEffect } from 'react';
 import { WidthSpacer } from '../../components/home_background_circle/home_background_circle';
 import { ActionButton, ActionButtonsRow, IconsLeadingText, InputsContainer, ItemInMoreImages, ItemInMoreImagesContainer, MoreImages, NameInput, PlaceForLogo, PriceAndDiscount, ProductDetailBackground, ProductDetailInfo, ProductDetailInfoContainer, ProductDetailRow, ProductFoodLabel, ProductImageContainer, ProductSubFoodLabel, TimeDeliveryRow, TitleAndDescriptionTimeDelivery } from '../../components/product_details_css/product_details_css';
 import AppCompanyLogo from '../../home/logo_and_company_name';
@@ -60,7 +61,9 @@ export default function ProductDetail({ params }) {
               Also, keep in mind that the useRouter hook is only available on the client-side, and not during server-side rendering. If you need to access query parameters during server-side rendering, you can use the context.query object instead, where context is the first argument of the getInitialProps function.
             </ProductSubFoodLabel>
             <WidthSpacer height={'30px'} />
-
+            <InputsContainer>
+        
+            </InputsContainer>
             <InputsContainer>
               <NameInput type="text" placeholder="Name">
               </NameInput>
