@@ -171,7 +171,7 @@ export default function HomeMobile(params) {
 
                     <PriceLabelRow>
                       <CurrencySignRed>
-                        $
+                        GHS
                       </CurrencySignRed>
                       <WidthSpacer width="4px" />
                       <PriceLabel>
@@ -210,7 +210,7 @@ export default function HomeMobile(params) {
               </TotalOrder>
 
               <TotalOrderValue>
-                $24.3
+                GHS24.3
               </TotalOrderValue>
             </OrderRow>
 

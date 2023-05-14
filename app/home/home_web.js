@@ -35,7 +35,7 @@ export default function HomeWeb(params) {
             </TotalOrder>
 
             <TotalOrderValue>                
-                $24.3
+                GHS24.3
               </TotalOrderValue>
           </OrderRow>
 
@@ -91,7 +91,7 @@ export default function HomeWeb(params) {
 
                       <PriceLabelRow>
                         <CurrencySignRed>
-                          $
+                          GHS
                         </CurrencySignRed>
                         <WidthSpacer width="4px" />
                         <PriceLabel>

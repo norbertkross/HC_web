@@ -557,8 +557,7 @@ export const FoodItemWhiteOvalContainer = styled.div`
   /* transform: scaleY(-1); */
   margin-top: 10px ;
   background: white;
-  box-shadow: 0 7px 30px -10px rgba(150,170,180,0.5);
-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   display: flex;
   justify-content:center;
   align-items:center;
