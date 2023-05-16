@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from 'react';
 import { AppBar, BackForwardButton, Backwards, BuyBag, BuyNowButton, BuyNowRoundCartButton, BuyNowRow, CartBadge, CartIcon, ClockEight, CurrencySignRed, DurationBlackContainer, FoodItem, FoodItemContainer, FoodItemWhiteOvalContainer, FoodLabel, FoodOptionsBody, FoodOptionsContainer, Forward, GreyDivider, HideOnBiggerScreens, IncreasePrice, ItemDurationContainer, ItemsQuantityButton, LoginButton, LoginIcon, MobileBackgroundShape, MobileHeadbackground, MoreMenu, OderDetailsSub_1, OderDetailsSub_2, OderYour, OrderRow, PriceLabel, PriceLabelRow, Quantity, ReducePrice, SelectedFoodAndItemDuration, SelectedFoodAndItemDurationContainer, SelectedFooddItem, SelectedFoodLabel, SelectedFoodLabelRow, SelectedFoodLabelSTAR, SignIButton, StarAndRateHolder, STarValue, TotalOrder, TotalOrderValue, UserIcon, WidthSpacer } from '../components/home_background_circle/home_background_circle';
 import { AppStateMain } from '../state/app_state';
 import AppCompanyLogo from './logo_and_company_name';
+
+
 export default function HomeMobile(params) {
 
   const [deviceWidth, setDeviceWidth] = useState(200.0);
@@ -22,8 +24,9 @@ export default function HomeMobile(params) {
     }
 
   }, []);
+
   const {
-    displayMobileMoreMenu, setDisplayMobileMoreMenu, selectedFoodImage, setSelectedFoodImage, items, selectedFoodIndex, setSelectedFoodIndex, allFoods
+    displayMobileMoreMenu, setDisplayMobileMoreMenu, selectedFoodIndex, setSelectedFoodIndex, allFoods
   } = useContext(AppStateMain);
 
   return <div>

@@ -1,10 +1,12 @@
-import { createContext, useContext, useState } from "react";
-
+import { createContext, useState } from "react";
+import { app } from '../firebase_configs/firebase_config';
+import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore/lite';
 export const AppStateMain = createContext({})
+const db = getFirestore(app);
 
-export default function AppState({children}) {
+export default function AppState({ children }) {
 
-  const [selectedFoodIndex, setSelectedFoodIndex] = useState(0) 
+  const [selectedFoodIndex, setSelectedFoodIndex] = useState(0)
 
   const [allFoods, setAllFoods] = useState([
     {
@@ -47,23 +49,46 @@ export default function AppState({children}) {
       stars: 3.2,
       background: `rgba(252, 35, 57, 0.2)`
     },
-    
-  ]) 
-  
-  const [displayMobileMoreMenu, setDisplayMobileMoreMenu] = useState(false)  
+
+  ])
+
+  const [displayMobileMoreMenu, setDisplayMobileMoreMenu] = useState(false)
 
   const [selectedFoodImage, setSelectedFoodImage] = useState("/ybls.jpeg");
 
   const [items, setItemsArray] = useState(['/ybls.jpeg', '/food_1.jpeg', '/food_2.jpeg', '/food_3.jpeg', '/food_4.jpeg'
   ]);
 
+  const createAnOrder= async()=>{
+    try {
+      const orderData = {
+        id: "fd66XD7r6dwDEW",
+        date: Date(),
+        name: "Yam Ball (Corned Beef)"
+        // The data you want to save in the document
+        // For example: name, age, etc.
+      };
+
+      const docRef = await addDoc(collection(db, 'all_orders'), orderData);
+      console.log('Document added with ID:', docRef.id);
+      return docRef;
+  
+
+      return docRef
+    } catch (error) {
+      console.error('Error creating document:', error);
+      return undefined
+    }
+
+  }  
+
   // const [shapeColors, setShapeColors] = useState(["rgba(86, 245, 155,0.3)", 'rgba(252, 35, 57, 0.3)', 'rgba(222, 62, 240, 0.3)', 'rgba(131, 150, 235, 0.3)', 'rgba(252, 35, 57, 0.3)']);
 
 
   return <AppStateMain.Provider value={{
-    displayMobileMoreMenu, setDisplayMobileMoreMenu, selectedFoodImage, setSelectedFoodImage, items, setItemsArray, allFoods, selectedFoodIndex, setSelectedFoodIndex
-    }}> 
-      {children}
-    </AppStateMain.Provider>
- 
+    displayMobileMoreMenu, setDisplayMobileMoreMenu, selectedFoodImage, setSelectedFoodImage, items, setItemsArray, allFoods, selectedFoodIndex, setSelectedFoodIndex,createAnOrder
+  }}>
+    {children}
+  </AppStateMain.Provider>
+
 }

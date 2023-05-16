@@ -6,7 +6,7 @@ import { AppStateMain } from '../state/app_state';
 import { useContext } from 'react';
 
 export default function HomeWeb(params) {
-  const { selectedFoodImage, setSelectedFoodImage, items, selectedFoodIndex, setSelectedFoodIndex, allFoods
+  const { selectedFoodIndex, setSelectedFoodIndex, allFoods
   } = useContext(AppStateMain);
   
   return <div>
