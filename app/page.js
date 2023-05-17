@@ -1,7 +1,6 @@
 'use client';
 
 import HoldViews from './home/hold_views';
-import AppState from './state/app_state';
 
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
@@ -25,16 +24,10 @@ export default function App() {
 
         <LoaderIndicator>
           <LoaderBody />
-        </LoaderIndicator>
-        // <div>
-        //   LOADING PAGE... { loading.toString()}
-        // </div>
+        </LoaderIndicator>        
         :
-        <div>
-          <AppState>
             <HoldViews></HoldViews>
-          </AppState>
-        </div>}
+        }
     </main>
   )
 }

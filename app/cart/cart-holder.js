@@ -3,21 +3,29 @@
 import { useContext } from 'react';
 import { ActionButton, AddMinus, AddMinusContainer, Cartbackground, CartHeading, CloseCart, DeleteFromCart, IconsLeadingText, ItemActions, ItemCard, ItemCardContainer, ItemImage, ItemName, ItemNameDescPriceContainer, ItemSubLabel } from '../components/cart_styles/cart_style';
 import { WidthSpacer } from '../components/home_background_circle/home_background_circle';
-import AppState, { AppStateMain } from '../state/app_state';
+// import AppState, { AppStateMain } from '../state/app_state';
+// import { createAnOrder } from '../state/method_helpers/app_firebase_helper_methods'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { updateAddingToCartState } from '../state/redux_state/app_slice'
 
 export default function UserCart(params) {
-  const { createAnOrder, selectedFoodIndex } = useContext(AppStateMain)
+
+  // const { createAnOrder, selectedFoodIndex } = useContext(AppStateMain)
   // const context = useContext(AppStateMain)
+
+  const { selectedFoodIndex } = useSelector(state => state.hcState)
+
+  const dispatch = useDispatch()
+
   return <div>
       <CartHeading>
         <WidthSpacer width={'10px'} />
         <div style={{ paddingTop: '5px' }}>
           <ItemName size={'20px'}>
-            My Cart {`${selectedFoodIndex}`}
+          My Cart {`${selectedFoodIndex}`}
           </ItemName>
         </div>
-
         <CloseCart />
       </CartHeading>
       <Cartbackground>
@@ -84,7 +92,7 @@ export default function UserCart(params) {
         <WidthSpacer height={'20px'} />
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <ActionButton bg={'red'} onClick={(e) =>
-            createAnOrder()
+          dispatch(updateAddingToCartState())
           }>
             <IconsLeadingText />
             <WidthSpacer width={'10px'} />
