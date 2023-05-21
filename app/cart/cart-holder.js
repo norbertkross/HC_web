@@ -1,10 +1,10 @@
 'use client'
 
 import { useContext } from 'react';
-import { ActionButton, AddMinus, AddMinusContainer, Cartbackground, CartHeading, CloseCart, DeleteFromCart, IconsLeadingText, ItemActions, ItemCard, ItemCardContainer, ItemImage, ItemName, ItemNameDescPriceContainer, ItemSubLabel } from '../components/cart_styles/cart_style';
+import { ActionButton, AddingToCartStatus, AddMinus, AddMinusContainer, Cartbackground, CartHeading, CloseCart, DeleteFromCart, IconsLeadingText, Indicator, IndicatorWhite, ItemActions, ItemCard, ItemCardContainer, ItemImage, ItemName, ItemNameDescPriceContainer, ItemSubLabel } from '../components/cart_styles/cart_style';
 import { WidthSpacer } from '../components/home_background_circle/home_background_circle';
-// import AppState, { AppStateMain } from '../state/app_state';
-// import { createAnOrder } from '../state/method_helpers/app_firebase_helper_methods'
+import { Dialog } from 'primereact/dialog';
+
 
 import { useSelector, useDispatch } from 'react-redux'
 import { updateAddingToCartState } from '../state/redux_state/app_slice'
@@ -14,11 +14,27 @@ export default function UserCart(params) {
   // const { createAnOrder, selectedFoodIndex } = useContext(AppStateMain)
   // const context = useContext(AppStateMain)
 
-  const { selectedFoodIndex } = useSelector(state => state.hcState)
+  const { selectedFoodIndex, addingToCart, showDialog } = useSelector(state => state.hcState)
 
   const dispatch = useDispatch()
 
   return <div>
+    <Dialog header={
+      <div>
+        {showDialog['statusOK'] == true? "Success":"Failed"}
+      </div>} visible={showDialog['show']}
+      style={{ width: '70vw', borderRadius: '0px' }}
+      onHide={() => {
+        console.log("Calling hide")
+        dispatch(updateShowDialog(false))
+
+      }}
+      position={"top-right"} >
+      <AddingToCartStatus>
+        {showDialog['statusOK'] == true ? "Successfully ordered item" : "Could not process order"}
+      </AddingToCartStatus>
+    
+    </Dialog>    
       <CartHeading>
         <WidthSpacer width={'10px'} />
         <div style={{ paddingTop: '5px' }}>
@@ -92,15 +108,36 @@ export default function UserCart(params) {
         <WidthSpacer height={'20px'} />
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <ActionButton bg={'red'} onClick={(e) =>
-          dispatch(updateAddingToCartState())
-          }>
+          dispatch(updateAddingToCartState(
+            {
+              data: {
+                id: "fd66XD7r6dwDEW",
+                date: Date(),
+                name: "Yam Ball (Corned Beef)"
+                // The data you want to save in the document
+                // For example: name, age, etc.
+              },
+              reset: dispatch(resetCartProcessDialog()),
+
+              updateSuccess: dispatch(showSuccessDialog()),
+              
+              updateFailed: dispatch(showErrorFailedDialog()),
+            }
+          ))
+          } isLoading={addingToCart}>
             <IconsLeadingText />
             <WidthSpacer width={'10px'} />
 
-            ORDER NOW
+          
+          {addingToCart == true ?
+            <div style={{paddingLeft:'40px'}}><IndicatorWhite /></div>
+            
+            : <div>ORDER NOW</div>}
+         
             <WidthSpacer width={'10px'} />
             <WidthSpacer width={'10px'} />
-            <WidthSpacer width={'10px'} />
+          <WidthSpacer width={'10px'} />
+  
           </ActionButton>
         </div>
 

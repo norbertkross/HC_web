@@ -14,6 +14,7 @@ const initialState = {
   ],
   allFoods: AllFoodsForApp,
   addingToCart: false,
+  showDialog: {statusOK:false,show:false},
   index:0,
 }
 
@@ -43,10 +44,23 @@ export const appMainState = createSlice({
       state.allFoods = action.payload
     },
     updateAddingToCartState: (state, action) => {
-      state.addingToCart = action.payload
+      // state.addingToCart = action.payload
       console.log("ADDING: ", state.addingToCart)
       createAnOrder(state,action);
     },
+    updateShowDialog: (state, action) => {
+      state.showDialog = { ...state.showDialog, show: action.payload }
+    },
+    showErrorFailedDialog: (state, action) => {
+      state.showDialog = { ...state.showDialog, show: true, statusOK:false }
+    },
+    showSuccessDialog: (state, action) => {
+      state.showDialog = { ...state.showDialog, show: true, statusOK: true }
+    },
+    resetCartProcessDialog: (state, action) => {
+      state.showDialog = { ...state.showDialog, show: false, statusOK: false }
+    },
+
   }
 })
 

@@ -109,11 +109,12 @@ export const ItemActions = styled.div`
 
 
 export const ActionButton = styled.div`
+  cursor:pointer;
   display: flex;
   align-items:center;
   justify-Content:space-between;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  padding: 16px 25px;
+  padding: ${props => props.isLoading == true ? '5px' : '16px'} 25px;
   color: ${props => props.color != null ? props.color : 'white'};
   font-size:16px;
   border-radius:10px;
@@ -188,4 +189,20 @@ export const CloseCart = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat; 
+`;
+
+export const IndicatorWhite = styled.div`
+  width: 50px;
+  height: 50px;
+  background-image: url("/indicator_white.gif");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat; 
+`;
+
+export const AddingToCartStatus = styled.div`
+color: ${props => props.failed == true ? 'red' : '#04bd0a'} ;
+
+  font-weight:bold;
+  font-size:'24px';
 `;
